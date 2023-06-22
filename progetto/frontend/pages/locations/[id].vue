@@ -5,19 +5,29 @@
 <template>
     <main>
         <div class = "info-group">
-            <img id = "main-img" src = "~/assets/img/home-image.jpg" />
+            <img id = "main-img" src = "~/assets/img/progetto.png" />
             <div id = "data-container">
                 <p class = "data">Name: <span>{{ location.name }}</span></p>
-                <p class = "data">City: <span>{{ location.city }}</span></p>
+                <p class = "data">Area: <span>{{ location.city }}</span></p>
             </div>
         </div>
+
+        <h1 id="proj">area of concern:</h1>
+
         <div id = "dog-card-container">
-            <SmallCard v-for = "dog of location.dogs" :link = "'/dogs/' + dog.id" :title = "dog.name" :subtitle = "dog.breed"/>
+           <SmallCard :title = "location.area.name" :subtitle = "location.area.number" :link = "'/areas/' + location.area.id" />
         </div>
+
+        <h1 id="proj">supervisor:</h1>
+        
+        <div id = "dog-card-container">
+          <SmallCard :title = "location.dog.name" :subtitle = "location.dog.breed" :link = "'/dogs/' + location.dog.id" />
+        </div>
+        
     </main>
 </template>
 
-<script>
+<script >
     /*
         The defineNuxtComponent gets us access to the asyncData property.
         This is the first function that is called by nuxt when the page is called.

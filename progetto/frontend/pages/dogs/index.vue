@@ -11,37 +11,27 @@
         <h1>OUR TEAM</h1>
         <h2> we are a team of people who invest in the future</h2>
         <div id="card-container">
-            <Card v-for = "dog of filtered" :title = "dog.name" :subtitle = "dog.breed" :link = "'/dogs/' + dog.id" />
+            <Card v-for = "dog of dogs" :title = "dog.name" :subtitle = "dog.breed" :link = "'/dogs/' + dog.id"  />
         </div>
     </main>
 </template>
 
-<script setup>
-    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
-    const { data: dogs } = await useFetch(useRuntimeConfig().public.serverURL + '/dogs')
+<script>
     /*
-        In order to implement a filter, we use the computed property.
-        This allows to have a cached value that contains the filtered list.
-        Instead of using the normal list for the cards, we used the computed property directly.
+        The defineNuxtComponent gets us access to the asyncData property.
+        This is the first function that is called by nuxt when the page is called.
+        We can use this to pre-load the data to make it available to the user.
     */
-    const age = ref(0);
-
-    const filtered = computed(() => {
-        // Checking for values where the full list is provided
-        if(age.value == 0 || age.value == "")
-            return dogs.value
-
-        const arr = []
-
-        // Filtering the list
-        for(let dog of dogs.value) {
-            if(dog.age < age.value)
-                arr.push(dog)
+    export default defineNuxtComponent({
+    async asyncData() {
+        // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
+        const dogs = await $fetch(useRuntimeConfig().public.serverURL + "/dogs");
+        
+        return {
+            dogs
         }
-
-        // Returning the filtered list
-        return arr
-    })
+    }
+})
 </script>
 
 <style>

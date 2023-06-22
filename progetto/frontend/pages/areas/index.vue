@@ -1,4 +1,6 @@
 <!--
+
+import CardArea from '~/components/CardArea.vue';
     Page with the list of all the dogs.
     As described in the Card component, the same component was used for both Dog and Location since they have the same structure.
 -->
@@ -7,42 +9,30 @@
         <!--
             Form used to filter the list by age.
         -->
-        <div class = "form-container">
-            <label for = "age-filter">Age filter</label><input id = "age-filter" type = 'text' placeholder = "Age filter" v-model = "age">
-        </div>
-        <h1>Dogs</h1>
+
+        <h1> here you can find our areas of investement</h1>
         <div id="card-container">
-            <Card v-for = "dog of filtered" :title = "dog.name" :subtitle = "dog.breed" :link = "'/dogs/' + dog.id" />
+            <CardArea v-for = "area of areas" :title = "area.name" :link = "'/areas/' + area.id" />
         </div>
     </main>
 </template>
 
-<script setup>
-    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
-    const { data: dogs } = await useFetch(useRuntimeConfig().public.serverURL + '/dogs')
+<script>
     /*
-        In order to implement a filter, we use the computed property.
-        This allows to have a cached value that contains the filtered list.
-        Instead of using the normal list for the cards, we used the computed property directly.
+        The defineNuxtComponent gets us access to the asyncData property.
+        This is the first function that is called by nuxt when the page is called.
+        We can use this to pre-load the data to make it available to the user.
     */
-    const age = ref(0);
-
-    const filtered = computed(() => {
-        // Checking for values where the full list is provided
-        if(age.value == 0 || age.value == "")
-            return dogs.value
-
-        const arr = []
-
-        // Filtering the list
-        for(let dog of dogs.value) {
-            if(dog.age < age.value)
-                arr.push(dog)
+    export default defineNuxtComponent({
+    async asyncData() {
+        // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
+        const areas = await $fetch(useRuntimeConfig().public.serverURL + "/areas");
+        
+        return {
+            areas
         }
-
-        // Returning the filtered list
-        return arr
-    })
+    }
+})
 </script>
 
 <style>

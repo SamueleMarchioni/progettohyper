@@ -5,7 +5,7 @@
 <template>
     <main>
         <div class = "info-group">
-            <img id = "main-img" src = "~/assets/img/peter.jpg" />
+            <img id = "main-img" src = "~/assets/img/Peter Parker.jpg" />
             <div id = "data-container">
                 <p class = "data">Name: <span>{{ dog.name }}</span></p>
                 <p class = "data">Role: <span>{{ dog.breed }}</span></p>
@@ -22,16 +22,31 @@
         <p id = "description" v-html = "newLineOnFullStop(dog.description)"></p>
       
          <h1 id="proj">projects supervised:</h1>
-
-        <SmallCard :title = "dog.location.name" :subtitle = "dog.location.city" :link = "'/locations/' + dog.location.id" />
+         
+         <div id = "dog-card-container">
+            <SmallCard v-for = "location of dog.locations" :link = "'/locations/' + location.id" :title = "location.name" :subtitle = "location.city"/>
+        </div>
     </main>
 </template>
 
-<script setup>
-    const route = useRoute()
-    const id = route.params.id
-    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
-    const { data: dog } = await useFetch(useRuntimeConfig().public.serverURL + '/dogs/' + id)
+<script>
+    /*
+        The defineNuxtComponent gets us access to the asyncData property.
+        This is the first function that is called by nuxt when the page is called.
+        We can use this to pre-load the data to make it available to the user.
+    */
+    export default defineNuxtComponent({
+        async asyncData() {
+            // Despite using the options API, this.$route is not available in asyncData.
+            const route = useRoute()
+            const dog = await $fetch(useRuntimeConfig().public.serverURL + '/dogs/' + route.params.id)
+
+            return {
+                dog
+            }
+        }
+    })
+    
 </script>
 
 <style>

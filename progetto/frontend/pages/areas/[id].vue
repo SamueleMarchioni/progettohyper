@@ -5,29 +5,41 @@
 <template>
     <main>
         <div class = "info-group">
-            <img id = "main-img" src = "~/assets/img/home-image.jpg" />
+            <img id = "main-img" src = "~/assets/img/economia.jpg" />
             <div id = "data-container">
-                <p class = "data">Name: <span>{{ dog.name }}</span></p>
-                <p class = "data">Breed: <span>{{ dog.breed }}</span></p>
-                <p class = "data">Age: <span>{{ dog.age }}</span></p>
+                <p class = "data"> <span>{{ area.name }}</span></p>
             </div>
         </div>
-        <h2>Description</h2>
+        <p id = "description" v-html = "newLineOnFullStop(area.description)"></p>
         <!--
             v-html allows us to change the structure of a HTML element.
             It used because of the 'newLineOnFullStop' function that returns a string with the <br> tags.
             This function is a composable that is available anywhere, without requiring to be imported.
         -->
-        <p id = "description" v-html = "newLineOnFullStop(dog.description)"></p>
-        <SmallCard :title = "dog.location.name" :subtitle = "dog.location.city" :link = "'/locations/' + dog.location.id" />
+        <div id = "dog-card-container">
+            <SmallCard v-for = "location of area.locations" :link = "'/locations/' + location.id" :title = "location.name" :subtitle = "location.city"/>
+        </div>
     </main>
 </template>
 
-<script setup>
-    const route = useRoute()
-    const id = route.params.id
-    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
-    const { data: dog } = await useFetch(useRuntimeConfig().public.serverURL + '/dogs/' + id)
+<script>
+    /*
+        The defineNuxtComponent gets us access to the asyncData property.
+        This is the first function that is called by nuxt when the page is called.
+        We can use this to pre-load the data to make it available to the user.
+    */
+    export default defineNuxtComponent({
+        async asyncData() {
+            // Despite using the options API, this.$route is not available in asyncData.
+            const route = useRoute()
+            const area = await $fetch(useRuntimeConfig().public.serverURL + '/areas/' + route.params.id)
+
+            return {
+                area
+            }
+        }
+    })
+    
 </script>
 
 <style>
