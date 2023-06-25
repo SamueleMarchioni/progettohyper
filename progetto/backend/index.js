@@ -55,6 +55,18 @@ async function initDB() {
         city: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        most: {
+            type: DataTypes.NUMBER,
+            allowNull: false
+        },
+        area_selection: {
+            type: DataTypes.NUMBER,
+            allowNull: false
         }
     })
 

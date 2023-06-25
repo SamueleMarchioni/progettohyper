@@ -6,10 +6,7 @@ import CardArea from '~/components/CardArea.vue';
 -->
 <template>
     <main>
-        <!--
-            Form used to filter the list by age.
-        -->
-
+       
         <h1> here you can find our areas of investement</h1>
         <div id="card-container">
             <CardArea v-for = "area of areas" :title = "area.name" :link = "'/areas/' + area.id" />
@@ -53,20 +50,6 @@ import CardArea from '~/components/CardArea.vue';
         justify-content: center;
         align-content: flex-start;
         gap: 10px;
-    }
-
-    .form-container {
-        width: 90%;
-        border-radius: 10px;
-        border: 2px solid brown;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-content: flex-start;
-        gap: 20px;
-
-        background-color: burlywood;
-        padding: 20px;
     }
 
 </style>

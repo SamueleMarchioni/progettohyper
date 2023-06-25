@@ -5,17 +5,17 @@ export default async (models) => {
     const areaModel = [
         {
             name: "Economy",
-            number: 0,
+            number: 1,
             description: " breve descrizione area economy"
         },
         {
             name: "Tourism",
-            number: 1,
+            number: 2,
             description: " breve descrizione area tourism"
         },
         {
             name: "Health",
-            number: 2,
+            number: 3,
             description: " breve descrizione area Health"
         }
     ]
@@ -103,91 +103,136 @@ export default async (models) => {
             name: "progetto 1",
             city: "Economy",
             areaId: area0.id,
-            dogId : dog0.id
+            dogId : dog0.id,
+            description: "p1",
+            most : 1,
+            area_selection : 1
         },
         {
             name: "progetto 2",
             city: "Economy ",
             areaId: area0.id,
             dogId : dog1.id,
+            description: "p2",
+            most : 0,
+            area_selection : 1
         },
         {
             name: "progetto 3",
             city: "Economy ",
             areaId: area0.id,
-            dogId : dog2.id
+            dogId : dog2.id,
+            description: "p3",
+            most : 0,
+            area_selection : 1
         },
         {
             name: "progetto 4",
             city: "Economy ",
             areaId: area0.id,
-            dogId : dog3.id
+            dogId : dog3.id,
+            description: "p4",
+            most : 0,
+            area_selection : 1
         },
         {
             name: "progetto 5",
             city: "Economy ",
             areaId: area0.id,
-            dogId : dog4.id
+            dogId : dog4.id,
+            description: "p5",
+            most : 1,
+            area_selection : 1
         },
         {
             name: "progetto 6",
             city: "Tourism ",
             areaId: area1.id,
-            dogId : dog5.id
+            dogId : dog5.id,
+            description: "p6",
+            most : 1,
+            area_selection : 2
         },
         {
             name: "progetto 7",
             city: "Tourism ",
             areaId: area1.id,
-            dogId : dog6.id
+            dogId : dog6.id,
+            description: "p7",
+            most : 0,
+            area_selection : 2
         },
         {
             name: "progetto 8",
             city: "Tourism ",
             areaId: area1.id,
-            dogId : dog7.id
+            dogId : dog7.id,
+            description: "p8",
+            most : 0,
+            area_selection : 2
         },
         {
             name: "progetto 9",
             city: "Tourism ",
             areaId: area1.id,
-            dogId : dog8.id
+            dogId : dog8.id,
+            description: "p9",
+            most : 0,
+            area_selection : 2
         },
         {
             name: "progetto 10",
             city: "Tourism ",
             areaId: area1.id,
-            dogId : dog9.id
+            dogId : dog9.id,
+            description: "p10",
+            most : 1,
+            area_selection : 2
         },
         {
             name: "progetto 11",
             city: "Health ",
             areaId: area2.id,
-            dogId : dog0.id
+            dogId : dog0.id,
+            description: "p11",
+            most : 1,
+            area_selection : 3
         },
         {
             name: "progetto 12",
             city: "Health ",
             areaId: area2.id,
-            dogId : dog1.id
+            dogId : dog1.id,
+            description: "p12",
+            most : 0,
+            area_selection : 3
         },
         {
             name: "progetto 13",
             city: "Health ",
             areaId: area2.id,
-            dogId : dog2.id
+            dogId : dog2.id,
+            description: "p13",
+            most : 0,
+            area_selection : 3
         },
         {
             name: "progetto 14",
             city: "Health ",
             areaId: area2.id,
-            dogId : dog3.id
+            dogId : dog3.id,
+            description: "p14",
+            most : 0,
+            area_selection : 3
         },
         {
             name: "progetto 15",
             city: "Health",
             areaId: area2.id,
-            dogId : dog4.id
+            dogId : dog4.id,
+            description: "p15",
+            most : 0,
+            area_selection : 3
         }
 
     ]

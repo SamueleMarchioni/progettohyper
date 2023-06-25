@@ -7,7 +7,7 @@
         This also allows to have a much cleaner and easy to read 'code'
     -->
     <main>
-        <TextImage description = "This is a description for the Dog's Shelter. The best place where dogs can rest. " />
+        <TextImage id="st" description = "This is a description for the Dog's Shelter. The best place where dogs can rest. " />
         <TextImage description = "This is the second description for the Dog's Shelter. The best place where dogs can rest." :isReverse = true /> 
     </main>
 </template>
@@ -18,5 +18,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    st {
+        text-decoration-color:rgb(11, 139, 182);
     }
 </style>

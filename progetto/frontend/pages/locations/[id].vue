@@ -1,4 +1,10 @@
 <!--
+
+import SmallCardArea from '~/components/smallCardArea.vue';
+
+import { SmallCard } from '~/.nuxt/components';
+
+import SmallCardArea from '~/components/smallCardArea.vue';
     Page description for a single location.
     As described in the SmallCard component, the same component was used for both Dog and Location since they have the same structure.
 -->
@@ -12,10 +18,12 @@
             </div>
         </div>
 
-        <h1 id="proj">area of concern:</h1>
+        <p id = "description" v-html = "newLineOnFullStop(location.description)"></p>
 
+        <h1 id="proj">area of concern:</h1>
+        
         <div id = "dog-card-container">
-           <SmallCard :title = "location.area.name" :subtitle = "location.area.number" :link = "'/areas/' + location.area.id" />
+           <SmallCardArea :title = "location.area.name" :link = "'/areas/' + location.area.id" />
         </div>
 
         <h1 id="proj">supervisor:</h1>
@@ -34,16 +42,15 @@
         We can use this to pre-load the data to make it available to the user.
     */
     export default defineNuxtComponent({
-        async asyncData() {
-            // Despite using the options API, this.$route is not available in asyncData.
-            const route = useRoute()
-            const location = await $fetch(useRuntimeConfig().public.serverURL + '/locations/' + route.params.id)
-
-            return {
-                location
-            }
-        }
-    })
+    async asyncData() {
+        // Despite using the options API, this.$route is not available in asyncData.
+        const route = useRoute();
+        const location = await $fetch(useRuntimeConfig().public.serverURL + "/locations/" + route.params.id);
+        return {
+            location
+        };
+    }
+})
     
 </script>
 

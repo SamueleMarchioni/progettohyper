@@ -52,14 +52,6 @@
         align-content: flex-start;
     }
 
-    .form-container {
-        width: 90%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-content: flex-start;
-    }
-
     h1{
         color:  rgb(27, 103, 202);
     }

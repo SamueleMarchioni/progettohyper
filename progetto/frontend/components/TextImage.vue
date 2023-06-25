@@ -11,8 +11,8 @@
         There is also another way to achieve this by using the array notation. More here: https://vuejs.org/guide/essentials/class-and-style.html#class-and-style-bindings
     -->
     <div :class = "{'info-group': !isReverse, 'reverse-info-group': isReverse}">
-        <img class = "main-img" src = "~/assets/img/home-image.jpg" />
-        <p>
+        <img class = "main-img" src = "~/assets/img/Peter Parker.jpg" />
+        <p class="desc">
            {{ description }}
         </p>
     </div>
@@ -71,5 +71,12 @@
             flex-direction: column;
             gap: 10px;
         }
+    }
+    
+    .desc
+    {
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(27, 103, 202);
     }
 </style>
