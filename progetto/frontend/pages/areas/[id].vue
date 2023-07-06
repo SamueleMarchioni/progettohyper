@@ -22,23 +22,25 @@
     </main>
 </template>
 
-<script>
-    /*
-        The defineNuxtComponent gets us access to the asyncData property.
-        This is the first function that is called by nuxt when the page is called.
-        We can use this to pre-load the data to make it available to the user.
-    */
-    export default defineNuxtComponent({
-        async asyncData() {
-            // Despite using the options API, this.$route is not available in asyncData.
-            const route = useRoute()
-            const area = await $fetch(useRuntimeConfig().public.serverURL + '/areas/' + route.params.id)
-
-            return {
-                area
-            }
-        }
-    })
+<script setup>
+   const route = useRoute()
+   const id = route.params.id
+    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
+   const { data: area } = await useFetch(useRuntimeConfig().public.serverURL + '/areas/' + id)
+    
+   useHead({
+    title: "area - Venture innovative " ,
+    meta: [
+      {
+        name: 'description',
+        content: 'single area page, information about that spaific area, projects related' 
+      },
+      {
+        name: 'keywords',
+        content : 'area, projects'
+      }
+    ]
+  });
     
 </script>
 

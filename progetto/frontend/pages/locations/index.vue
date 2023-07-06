@@ -20,7 +20,7 @@
         </div>
         
         <div id="card-container">
-            <Card v-for = "location of filtered" :title = "location.name" :subtitle = "location.city" :link = "'/locations/' + location.id" />
+            <Card v-for = "location of filtered" :title = "location.name" :subtitle = "location.city" :link = "'/locations/' + location.id" :img_link="`_nuxt/assets/img/${location.name}.jpg`" />
         </div>
     
     </main>
@@ -48,7 +48,21 @@
         // Returning the filtered list
         return arr
     })
+    useHead({
+    title: 'All projects - Venture Innovative',
+    meta: [
+      {
+        name: 'description',
+        content: 'All projects page, see all the projects available in our firm or filter them by area' 
+      },
+      {
+        name: 'keywords',
+        content : 'projects, economy, tourism, healthcare, area'
+      }
+    ]
+  });
 </script>
+
 
 <style>
     #card-container

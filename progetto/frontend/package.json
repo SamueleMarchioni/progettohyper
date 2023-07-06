@@ -12,6 +12,15 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
-    "nuxt": "^3.3.3"
+    "node-sass": "^9.0.0",
+    "nuxt": "^3.3.3",
+    "sass-loader": "^13.3.2"
+  },
+  "dependencies": {
+    "@symbol-it/nuxtjs-notification-module": "^0.0.6",
+    "bootstrap": "^5.3.0",
+    "bootstrap-vue": "^2.23.1",
+    "i": "^0.3.7",
+    "sweetalert2": "^11.7.12"
   }
 }

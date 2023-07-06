@@ -35,23 +35,27 @@ import SmallCardArea from '~/components/smallCardArea.vue';
     </main>
 </template>
 
-<script >
-    /*
-        The defineNuxtComponent gets us access to the asyncData property.
-        This is the first function that is called by nuxt when the page is called.
-        We can use this to pre-load the data to make it available to the user.
-    */
-    export default defineNuxtComponent({
-    async asyncData() {
-        // Despite using the options API, this.$route is not available in asyncData.
-        const route = useRoute();
-        const location = await $fetch(useRuntimeConfig().public.serverURL + "/locations/" + route.params.id);
-        return {
-            location
-        };
-    }
-})
-    
+<script setup>
+   
+   const route = useRoute()
+   const id = route.params.id
+    // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
+   const { data: location } = await useFetch(useRuntimeConfig().public.serverURL + '/locations/' + id)
+   
+   useHead({
+    title: "project - Venture innovative " ,
+    meta: [
+      {
+        name: 'description',
+        content: 'single project page, information about a specific project' 
+      },
+      {
+        name: 'keywords',
+        content : 'project, supervisor, areav'
+      }
+    ]
+  });
+
 </script>
 
 <style>

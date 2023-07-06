@@ -4,31 +4,47 @@
 <template>
     <main>
         <main>
-            <p>
-                This are our contacts:
+            <h1> Are you interested? these are our contacts:</h1>
                 <ul>
-                    <li>E-mail: mail@shelter.it</li>
-                    <li>Tel: 053684864351</li>
+                    <li>E-mail: info@VCname.it</li>
+                    <li>Tel: 053843721</li>
                 </ul>
-            </p>
+            <h2> Write to us now in a simple way</h2>
             <form>
                 <div>
                     <label for = "name">Name & Surname</label>
-                    <input type = "text" id = "name" placeholder = "Name & Surname">
+                    <input type = "text" id = "name" placeholder = "Name & Surname" required>
                 </div>
                 <div>
                     <label for = "mail">E-mail</label>
-                    <input type = "email" id = "mail" placeholder = "E-mail">
+                    <input type = "email" id = "mail" placeholder = "E-mail" required>
                 </div>
                 <div id = "message-div">
                     <label for = "message">Message</label>
-                    <textarea id = "message" placeholder = "Write your message here"></textarea>  
+                    <textarea id = "message" placeholder = "Write your message here" required></textarea>  
                 </div>
                 <button>Send Message</button>
-            </form>
+             </form>
+
         </main>
     </main>
 </template>
+
+<script setup>
+  useHead({
+    title: 'Contact us - Venture Innovative',
+    meta: [
+      {
+        name: 'description',
+        content: 'Contac us page: our e-mail, adress, telephone number and a form to send us an e-mail directly from this page' 
+      },
+      {
+        name: 'keywords',
+        content : 'contact, name, surname, e-mail, telephone '
+      }
+    ]
+  });
+</script>
 
 <style>
     main {
@@ -44,7 +60,7 @@
         display: flex;
         flex-direction: column;
         padding: 15px;
-        border: 2px rgb(255, 102, 0) dashed;
+        border: 2px rgb(243, 136, 93) dashed;
         border-radius: 5px;
         row-gap: 20px;
     }
@@ -88,4 +104,5 @@
             min-width: 400px;
         }
     }
+    
 </style>

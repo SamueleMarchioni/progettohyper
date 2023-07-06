@@ -19,6 +19,22 @@
     </main>
 </template>
 
+<script setup>
+  useHead({
+    title: 'Venture Innovative',
+    meta: [
+      {
+        name: 'description',
+        content: 'see every information you want about Venture Innovative starting from our Home page' 
+      },
+      {
+        name: 'keywords',
+        content : 'Venture, Innovative, VC'
+      }
+    ]
+  });
+</script>
+
 <style>
     #main-img {
     width: 80%;

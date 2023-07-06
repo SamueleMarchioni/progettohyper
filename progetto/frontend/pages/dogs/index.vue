@@ -11,28 +11,30 @@
         <h1>OUR TEAM</h1>
         <h2> we are a team of people who invest in the future</h2>
         <div id="card-container">
-            <Card v-for = "dog of dogs" :title = "dog.name" :subtitle = "dog.breed" :link = "'/dogs/' + dog.id"  />
+            <Card v-for = "dog of dogs" :title = "dog.name" :subtitle = "dog.breed" :link = "'/dogs/' + dog.id" :img_link="`_nuxt/assets/img/${dog.name}.jpg`" />
         </div>
     </main>
 </template>
 
-<script>
-    /*
-        The defineNuxtComponent gets us access to the asyncData property.
-        This is the first function that is called by nuxt when the page is called.
-        We can use this to pre-load the data to make it available to the user.
-    */
-    export default defineNuxtComponent({
-    async asyncData() {
-        // useRuntimeConfig provide us with environment variables set up in the nuxtconfig file
-        const dogs = await $fetch(useRuntimeConfig().public.serverURL + "/dogs");
-        
-        return {
-            dogs
-        }
-    }
-})
-</script>
+<script setup>
+
+ const { data: dogs } = await useFetch(useRuntimeConfig().public.serverURL + '/dogs')
+
+
+  useHead({
+    title: 'All pearson - Venture Innovative',
+    meta: [
+      {
+        name: 'description',
+        content: 'All pearson page, the team that currently work in our firm' 
+      },
+      {
+        name: 'keywords',
+        content : 'pearson, team'
+      }
+    ]
+  });
+  </script>
 
 <style>
     #card-container

@@ -4,7 +4,7 @@
         <h1> have a look on our top ranked projects</h1>
 
         <div id="card-container">
-            <Card v-for = "location of filtered" :title = "location.name" :subtitle = "location.city" :link = "'/locations/' + location.id"  />
+            <Card v-for = "location of filtered" :title = "location.name" :subtitle = "location.city" :link = "'/locations/' + location.id" :img_link="`_nuxt/assets/img/${location.name}.jpg`"  />
         </div>
        
     </main>
@@ -27,6 +27,20 @@
         // Returning the filtered list
         return arr
     })
+
+    useHead({
+    title: 'Most relevant projects - Venture Innovative',
+    meta: [
+      {
+        name: 'description',
+        content: 'most relevant projects, our top 5 ranked projects' 
+      },
+      {
+        name: 'keywords',
+        content : 'most, relevant, projects, top'
+      }
+    ]
+  });
 </script>
 
   
